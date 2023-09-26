@@ -1,14 +1,14 @@
-import { Text } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { SafeAreaView, Text } from 'react-native';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
+import { CardListComponent } from '../../components/CardListComponent';
 
 export function FavoriteListScreen() {
-  const dispatch = useDispatch();
   const { favoriteList } = useSelector((state: RootState) => state.favoriteList);
 
   return (
-    <>
-      <Text>{favoriteList.length}</Text>
-    </>
+    <SafeAreaView>
+      <CardListComponent products={favoriteList} />
+    </SafeAreaView>
   );
 }

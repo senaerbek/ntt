@@ -1,11 +1,11 @@
-import { HomeScreen } from "../screens/HomeScreen";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { FontAwesome } from "@expo/vector-icons";
-import { styles } from "./style";
-import { constants } from "../theme/constants";
-import { CartScreen } from "../screens/CartScreen";
-import { ProductListScreen } from "../screens/ProductListScreen";
-import { FavoriteListScreen } from "../screens/FavoriteListScreen";
+import { HomeScreen } from '../screens/HomeScreen';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { FontAwesome } from '@expo/vector-icons';
+import { styles } from './style';
+import { constants } from '../theme/constants';
+import { CartScreen } from '../screens/CartScreen';
+import { ProductListScreen } from '../screens/ProductListScreen';
+import { FavoriteListScreen } from '../screens/FavoriteListScreen';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -14,14 +14,14 @@ function Tabs() {
     <BottomTab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
-          if (route.name === "Home") {
-            return <FontAwesome name="home" size={24} color={color} />;
-          } else if (route.name === "Cart") {
-            return <FontAwesome name="shopping-cart" size={24} color={color} />;
-          } else if (route.name === "List") {
-            return <FontAwesome name="list" size={24} color={color} />;
-          } else if (route.name === "FavoriteList") {
-            return <FontAwesome name="heart" size={24} color={color} />;
+          if (route.name === 'Home') {
+            return <FontAwesome name='home' size={constants.iconSize.default} color={color} />;
+          } else if (route.name === 'Cart') {
+            return <FontAwesome name='shopping-cart' size={constants.iconSize.default} color={color} />;
+          } else if (route.name === 'List') {
+            return <FontAwesome name='list' size={constants.iconSize.default} color={color} />;
+          } else if (route.name === 'FavoriteList') {
+            return <FontAwesome name='heart' size={constants.iconSize.default} color={color} />;
           }
           return null;
         },
@@ -32,24 +32,24 @@ function Tabs() {
       })}
     >
       <BottomTab.Screen
-        name="Home"
+        name='Home'
         component={HomeScreen}
-        options={{ tabBarLabel: "Home" }}
+        options={{ tabBarLabel: 'Home' }}
       />
       <BottomTab.Screen
-        name="Cart"
+        name='Cart'
         component={CartScreen}
-        options={{ tabBarLabel: "Cart" }}
+        options={{ tabBarLabel: 'Cart' }}
       />
       <BottomTab.Screen
-        name="List"
+        name='List'
         component={ProductListScreen}
-        options={{ tabBarLabel: "List" }}
+        options={{ tabBarLabel: 'List' }}
       />
       <BottomTab.Screen
-        name="FavoriteList"
+        name='FavoriteList'
         component={FavoriteListScreen}
-        options={{ tabBarLabel: "Favorite List" }}
+        options={{ tabBarLabel: 'Favorite List' }}
       />
     </BottomTab.Navigator>
   );
