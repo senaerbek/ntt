@@ -1,4 +1,4 @@
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Button, Image, Text, TouchableOpacity, View } from 'react-native';
 import { styles } from './style';
 import { FontAwesome } from '@expo/vector-icons';
 import { constants } from '../../theme/constants';
@@ -8,7 +8,9 @@ import { FavoriteItem } from '../../models/FavoriteItem';
 import { CartItem } from '../../models/CartItem';
 import { RootState } from '../../store';
 import { addToFavorite, removeFromFavorite } from '../../store/favorite/favoriteSlice';
-import { useMemo } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
+import { BottomSheetComponent } from '../BottomSheetComponent';
+import { ProductDetailComponent } from '../ProductDetailComponent';
 
 interface CardComponentProps {
   product: Product | FavoriteItem | CartItem;
@@ -24,26 +26,37 @@ export function CardComponent(props: CardComponentProps) {
     return !!favoriteList.find(favoriteItem => favoriteItem.id === product.id);
   }, [favoriteList]);
 
+  const onFavoritePress = useCallback(() => {
+    if (isInFavorite) {
+      dispatch(removeFromFavorite(product));
+    } else {
+      dispatch(addToFavorite(product));
+    }
+  }, [isInFavorite]);
+
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Image source={{ uri: product.imageUrl }} style={styles.image} />
-      <View style={styles.cardDescription}>
-        <View style={styles.infoView}>
-          <Text style={styles.title}>{product.name}</Text>
-          <Text style={styles.price}>${product.price}</Text>
-        </View>
-        <View style={styles.iconView}>
-          <TouchableOpacity onPress={() => {
-            if (isInFavorite) {
-              dispatch(removeFromFavorite(product));
-            } else {
-              dispatch(addToFavorite(product));
-            }
-          }}>
-            <FontAwesome name={isInFavorite ? 'heart' : 'heart-o'} size={constants.iconSize.small} />
-          </TouchableOpacity>
-        </View>
-      </View>
-    </TouchableOpacity>
+    <BottomSheetComponent
+      content={
+        <ProductDetailComponent
+          product={product} />
+      }
+      children={
+        <View style={styles.container}>
+          <Image source={{ uri: product.imageUrl }} style={styles.image} />
+          <View style={styles.cardDescription}>
+            <View style={styles.infoView}>
+              <Text style={styles.title}>{product.name}</Text>
+              <Text style={styles.price}>${product.price}</Text>
+            </View>
+            <View style={styles.iconView}>
+              <TouchableOpacity onPress={onFavoritePress}>
+                <FontAwesome
+                  name={isInFavorite ? 'heart' : 'heart-o'}
+                  size={constants.iconSize.small} />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>}
+    />
   );
 }

@@ -4,7 +4,7 @@ import { constants } from '../../theme/constants';
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: constants.colors.background,
-    width: '45%',
+    minWidth: '45%',
     height: 250,
     shadowColor: constants.colors.primary,
     shadowOffset: {

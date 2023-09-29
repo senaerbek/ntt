@@ -1,4 +1,5 @@
-import { Text } from "react-native";
+import { Text } from 'react-native';
+import { BottomSheetComponent } from '../../components/BottomSheetComponent';
 
 export function HomeScreen() {
   return (
