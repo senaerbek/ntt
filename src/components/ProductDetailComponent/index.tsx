@@ -20,7 +20,6 @@ export function ProductDetailComponent(props: ProductDetailProps) {
       <Button title={'Add to cart'} onPress={() => {
         dispatch(addToCart(product));
       }} />
-
     </View>
   );
 }
