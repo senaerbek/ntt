@@ -6,17 +6,20 @@ import { store } from './src/store';
 import React from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function App() {
   return (
     <Provider store={store}>
-      <GestureHandlerRootView style={styles.container}>
-        <BottomSheetModalProvider>
-          <NavigationContainer>
-            <ApplicationNavigator />
-          </NavigationContainer>
-        </BottomSheetModalProvider>
-      </GestureHandlerRootView>
+      <SafeAreaProvider>
+        <GestureHandlerRootView style={styles.container}>
+          <BottomSheetModalProvider>
+            <NavigationContainer>
+              <ApplicationNavigator />
+            </NavigationContainer>
+          </BottomSheetModalProvider>
+        </GestureHandlerRootView>
+      </SafeAreaProvider>
     </Provider>
   );
 }

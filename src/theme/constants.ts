@@ -38,4 +38,9 @@ export const constants = {
     default: 24,
     large: 28,
   },
+  heights: {
+    small: 40,
+    default: 50,
+    large: 60,
+  },
 };

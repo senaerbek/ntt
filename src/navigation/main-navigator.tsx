@@ -7,13 +7,20 @@ import { CartScreen } from '../screens/CartScreen';
 import { ProductListScreen } from '../screens/ProductListScreen';
 import { FavoriteListScreen } from '../screens/FavoriteListScreen';
 
-const BottomTab = createBottomTabNavigator();
+export type BottomTabParamList = {
+  Home: undefined;
+  Cart: undefined;
+  List: undefined;
+  FavoriteList: undefined;
+}
+
+const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 function Tabs() {
   return (
     <BottomTab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
+        tabBarIcon: ({ color }) => {
           if (route.name === 'Home') {
             return <FontAwesome name='home' size={constants.iconSize.default} color={color} />;
           } else if (route.name === 'Cart') {
