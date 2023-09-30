@@ -32,6 +32,7 @@ export function ProductDetailComponent(props: ProductDetailProps) {
       <View style={styles.productContainer}>
         <Text style={styles.title}>{product.name}</Text>
         <Text style={styles.cardDescription}>{product.description}</Text>
+        <Text style={styles.shippingMethod}>{product.shippingMethod}</Text>
         <Text style={styles.price}>${product.price}</Text>
         <View style={styles.buttonContainer}>
           {
@@ -39,8 +40,8 @@ export function ProductDetailComponent(props: ProductDetailProps) {
               ? <View style={styles.quantityContainer}>
                 <QuantityControlComponent
                   quantity={productQuantity}
-                  onDecrease={addToCartPress}
-                  onIncrease={onDecrease}
+                  onDecrease={onDecrease}
+                  onIncrease={addToCartPress}
                 />
               </View>
               : <ButtonComponent

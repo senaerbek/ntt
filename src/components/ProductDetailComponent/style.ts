@@ -29,6 +29,11 @@ export const styles = StyleSheet.create({
       fontSize: constants.size.font14,
       marginTop: constants.padding.mini,
     },
+    shippingMethod: {
+      color: constants.colors.error,
+      fontSize: constants.size.font14,
+      marginTop: constants.padding.mini,
+    },
     productContainer: {
       marginVertical: constants.padding.default,
     },

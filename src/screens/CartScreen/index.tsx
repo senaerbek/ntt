@@ -1,16 +1,36 @@
-import { Text } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { FlatList, View } from 'react-native';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
-import { CardListComponent } from '../../components/CardListComponent';
+import { CartItemComponent } from '../../components/CartItemComponent';
+import { constants } from '../../theme/constants';
+import { CartItem } from '../../models/CartItem';
+import { BottomSheetComponent } from '../../components/BottomSheetComponent';
+import { ProductDetailComponent } from '../../components/ProductDetailComponent';
 
 export function CartScreen() {
-  const dispatch = useDispatch();
   const { cartList } = useSelector((state: RootState) => state.cartList);
 
+  const renderItem = ({ item }: {
+    item: CartItem
+  }) => {
+    return (
+      <BottomSheetComponent
+        content={<ProductDetailComponent product={item} />}
+        children={<View style={{
+          marginHorizontal: constants.padding.default,
+          marginVertical: constants.padding.small,
+        }}>
+          <CartItemComponent cartItem={item} />
+        </View>}
+      />
+    );
+  };
+
   return (
-    <>
-      <Text>{cartList.length}</Text>
-      <CardListComponent products={cartList} />
-    </>
+    <FlatList
+      data={cartList}
+      renderItem={renderItem}
+      keyExtractor={(item, index) => index.toString()}
+    />
   );
 }
