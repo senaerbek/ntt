@@ -5,6 +5,7 @@ import { AppDispatch, RootState } from '../../store';
 import { getProducts } from '../../api/product/product-service';
 import { styles } from './style';
 import { CardListComponent } from '../../components/CardListComponent';
+import { HeaderComponent } from '../../HeaderComponent';
 
 export function ProductListScreen() {
   const dispatch = useDispatch<AppDispatch>();
@@ -15,10 +16,13 @@ export function ProductListScreen() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      {
-        loading ? <Text>Loading...</Text> : <CardListComponent products={products} />
-      }
-    </View>
+    <>
+      <HeaderComponent title='Product List' />
+      <View style={styles.container}>
+        {
+          loading ? <Text>Loading...</Text> : <CardListComponent products={products} />
+        }
+      </View>
+    </>
   );
 }

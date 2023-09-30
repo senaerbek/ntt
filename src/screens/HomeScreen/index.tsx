@@ -3,6 +3,7 @@ import { BottomSheetComponent } from '../../components/BottomSheetComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
 import { MapComponent } from '../../components/MapComponent';
+import { HeaderComponent } from '../../HeaderComponent';
 
 export function HomeScreen() {
   const [location, setLocation] = useState<Location | null>(null);
@@ -22,6 +23,7 @@ export function HomeScreen() {
 
   return (
     <>
+      <HeaderComponent title='HomeScreen' />
       <BottomSheetComponent
         content={
           <MapComponent
