@@ -25,7 +25,7 @@ export function SplashScreen() {
         }
       },
     );
-  }, []);
+  }, [navigateToApp]);
 
   return (
     <>

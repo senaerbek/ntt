@@ -6,6 +6,7 @@ import { styles } from './style';
 import { constants } from '../../theme/constants';
 import { MarkerDragStartEndEvent, MarkerPressEvent } from 'react-native-maps/lib/sharedTypes';
 import { Location } from '../../models/Location';
+import * as ExpoLocation from 'expo-location';
 
 const initialLocation: Location = {
   latitude: 38.4237,
@@ -13,29 +14,48 @@ const initialLocation: Location = {
 };
 
 interface MapComponentProps {
-  setLocation?: (location: Location) => void;
+  onLocationChange?: (location: Location) => void;
   location?: Location;
   search?: boolean;
 }
 
 export function MapComponent(props: MapComponentProps) {
-  const { setLocation, location, search = false } = props;
-  const [inputLocation, setInputLocation] = useState(initialLocation);
-  const region = { ...inputLocation, latitudeDelta: 0.015, longitudeDelta: 0.015 };
+  const { onLocationChange, location, search = false } = props;
+  const [defaultLocation, setDefaultLocation] = useState(initialLocation);
+  const region = { ...defaultLocation, latitudeDelta: 0.015, longitudeDelta: 0.015 };
 
   const onChangeRegion = useCallback((e: Location) => {
-    if (setLocation) {
-      setLocation(e);
-      setInputLocation(e);
+    if (onLocationChange) {
+      onLocationChange(e);
+      setDefaultLocation(e);
     }
-  }, [setLocation]);
+  }, [onLocationChange]);
 
+  const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await ExpoLocation.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        alert('Permission to access location was denied');
+        return;
+      }
+      let location = await ExpoLocation.getCurrentPositionAsync({});
+      setCurrentLocation({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+        },
+      );
+    })();
+  }, []);
 
   useEffect(() => {
     if (location) {
-      setInputLocation(location);
+      setDefaultLocation(location);
+    } else {
+      setDefaultLocation(currentLocation || initialLocation);
     }
-  }, [location]);
+  }, [currentLocation, location]);
 
   return (
     <>
@@ -55,7 +75,7 @@ export function MapComponent(props: MapComponentProps) {
         <Marker
           draggable={search}
           pinColor={constants.colors.info}
-          coordinate={inputLocation}
+          coordinate={defaultLocation}
           onDragEnd={(e: MarkerDragStartEndEvent) => {
             search ?
               onChangeRegion(e.nativeEvent.coordinate) : null;

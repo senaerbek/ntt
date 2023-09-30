@@ -19,7 +19,7 @@ export const constants = {
     secondary: '#FFA07A',
     error: '#FF6B6B',
     text: '#333333',
-    textSecondary: '#777777',
+    textSecondary: '#F0F0F0',
     disabled: '#C0C0C0',
     placeholder: '#C0C0C0',
     success: '#90EE90',
@@ -42,5 +42,10 @@ export const constants = {
     small: 40,
     default: 50,
     large: 60,
+  },
+  borderRadius: {
+    small: 6,
+    default: 8,
+    large: 12,
   },
 };

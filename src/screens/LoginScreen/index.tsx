@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackParamList } from '../../navigation/application-navigator';
 import { Location } from '../../models/Location';
+import { ButtonComponent } from '../../components/ButtonComponent';
+import { styles } from './style';
 
 export function LoginScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<StackParamList, 'Auth'>>();
@@ -18,12 +20,10 @@ export function LoginScreen() {
 
   return (
     <>
-      <View style={{
-        height: '90%',
-      }}>
-        <MapComponent setLocation={setLocation} search={true} />
+      <MapComponent onLocationChange={setLocation} search={true} />
+      <View style={styles.buttonContainer}>
+        <ButtonComponent text={'Login'} onPress={onLoginPress} />
       </View>
-      <Button title={'Login'} onPress={onLoginPress} />
     </>
   );
 }

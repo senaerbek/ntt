@@ -1,4 +1,4 @@
-import { Button, Text } from 'react-native';
+import { Button, Text, TouchableOpacity } from 'react-native';
 import { BottomSheetComponent } from '../../components/BottomSheetComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
@@ -14,6 +14,7 @@ export function HomeScreen() {
   useEffect(() => {
     AsyncStorage.getItem('location').then((value) => {
       if (value) {
+        console.log(value);
         setLocation(JSON.parse(value));
       }
     });
@@ -29,7 +30,10 @@ export function HomeScreen() {
         }
         children={<Text>Open BottomSheet</Text>}
       />
-      <Text onPress={deleteFromAsyncStorage}>HomeScreen</Text>
+      <TouchableOpacity onPress={deleteFromAsyncStorage}>
+
+        <Text>HomeScreen</Text>
+      </TouchableOpacity>
     </>
   );
 }
