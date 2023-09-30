@@ -4,7 +4,7 @@ import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import React, { useCallback, useEffect, useState } from 'react';
 import { styles } from './style';
 import { constants } from '../../theme/constants';
-import { MarkerDragStartEndEvent } from 'react-native-maps/lib/sharedTypes';
+import { MarkerDragStartEndEvent, MarkerPressEvent } from 'react-native-maps/lib/sharedTypes';
 import { Location } from '../../models/Location';
 
 const initialLocation: Location = {
@@ -13,35 +13,53 @@ const initialLocation: Location = {
 };
 
 interface MapComponentProps {
-  setLocation: (location: Location) => void;
+  setLocation?: (location: Location) => void;
+  location?: Location;
+  search?: boolean;
 }
 
 export function MapComponent(props: MapComponentProps) {
-  const { setLocation } = props;
-
+  const { setLocation, location, search = false } = props;
   const [inputLocation, setInputLocation] = useState(initialLocation);
+  const region = { ...inputLocation, latitudeDelta: 0.015, longitudeDelta: 0.015 };
 
   const onChangeRegion = useCallback((e: Location) => {
-    setLocation(e);
-    setInputLocation(e);
+    if (setLocation) {
+      setLocation(e);
+      setInputLocation(e);
+    }
   }, [setLocation]);
 
-  const region = { ...inputLocation, latitudeDelta: 0.015, longitudeDelta: 0.015 };
+
+  useEffect(() => {
+    if (location) {
+      setInputLocation(location);
+    }
+  }, [location]);
 
   return (
     <>
-      <View style={styles.inputContainer}>
-        <GooglePlaceInputComponent setLocation={onChangeRegion} />
-      </View>
+      {search ? (
+        <View style={styles.inputContainer}>
+          <GooglePlaceInputComponent setLocation={onChangeRegion} />
+        </View>
+      ) : null}
       <MapView
         provider={PROVIDER_GOOGLE}
         region={region}
+        onPress={(e) => {
+          search ?
+            onChangeRegion(e.nativeEvent.coordinate) : null;
+        }}
         style={{ height: '100%' }}>
         <Marker
-          draggable
+          draggable={search}
           pinColor={constants.colors.info}
           coordinate={inputLocation}
-          onDragEnd={(e: MarkerDragStartEndEvent) => onChangeRegion(e.nativeEvent.coordinate)}
+          onDragEnd={(e: MarkerDragStartEndEvent) => {
+            search ?
+              onChangeRegion(e.nativeEvent.coordinate) : null;
+          }}
         />
       </MapView>
     </>

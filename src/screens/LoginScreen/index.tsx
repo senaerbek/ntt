@@ -21,7 +21,7 @@ export function LoginScreen() {
       <View style={{
         height: '90%',
       }}>
-        <MapComponent setLocation={setLocation} />
+        <MapComponent setLocation={setLocation} search={true} />
       </View>
       <Button title={'Login'} onPress={onLoginPress} />
     </>

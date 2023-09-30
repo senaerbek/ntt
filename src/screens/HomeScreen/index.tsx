@@ -1,9 +1,11 @@
 import { Button, Text } from 'react-native';
 import { BottomSheetComponent } from '../../components/BottomSheetComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { MapComponent } from '../../components/MapComponent';
 
 export function HomeScreen() {
+  const [location, setLocation] = useState<Location | null>(null);
 
   const deleteFromAsyncStorage = () => {
     AsyncStorage.removeItem('location');
@@ -11,13 +13,23 @@ export function HomeScreen() {
 
   useEffect(() => {
     AsyncStorage.getItem('location').then((value) => {
-      console.log(value);
+      if (value) {
+        setLocation(JSON.parse(value));
+      }
     });
   }, []);
 
   return (
     <>
-      <Text>HomeScreen</Text>
+      <BottomSheetComponent
+        content={
+          <MapComponent
+            location={location}
+          />
+        }
+        children={<Text>Open BottomSheet</Text>}
+      />
+      <Text onPress={deleteFromAsyncStorage}>HomeScreen</Text>
     </>
   );
 }
