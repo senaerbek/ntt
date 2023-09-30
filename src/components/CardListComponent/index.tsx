@@ -1,9 +1,10 @@
 import { CardComponent } from '../CardComponent';
 import { styles } from './style';
-import { FlatList } from 'react-native';
 import { Product } from '../../models/Product';
 import { FavoriteItem } from '../../models/FavoriteItem';
 import { PaginatedFlatList } from '../PaginatedFlatlistComponent';
+import { BottomSheetComponent } from '../BottomSheetComponent';
+import { ProductDetailComponent } from '../ProductDetailComponent';
 
 interface CardListComponentProps {
   products: Product[] | FavoriteItem[];
@@ -16,10 +17,18 @@ export function CardListComponent(props: CardListComponentProps) {
 
   const renderItem = ({ item }: { item: Product }) => {
     return (
-      <CardComponent
-        product={item}
-        onPress={() => {
-        }}
+      <BottomSheetComponent
+        content={
+          <ProductDetailComponent
+            product={item} />
+        }
+        children={
+          <CardComponent
+            product={item}
+            onPress={() => {
+            }}
+          />
+        }
       />
     );
   };

@@ -21,10 +21,12 @@ export const constants = {
     text: '#333333',
     textSecondary: '#F0F0F0',
     disabled: '#C0C0C0',
+    borderColor: '#C0C0C0',
     placeholder: '#C0C0C0',
     success: '#90EE90',
     warning: '#FFD700',
     info: '#87CEEB',
+    black: '#000000',
   },
   radius: {
     mini: 3,

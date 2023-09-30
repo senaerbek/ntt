@@ -3,6 +3,7 @@ import { constants } from '../../theme/constants';
 
 export const styles = StyleSheet.create({
   container: {
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     height: constants.heights.default,

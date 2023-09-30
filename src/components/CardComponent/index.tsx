@@ -35,28 +35,21 @@ export function CardComponent(props: CardComponentProps) {
   }, [isInFavorite]);
 
   return (
-    <BottomSheetComponent
-      content={
-        <ProductDetailComponent
-          product={product} />
-      }
-      children={
-        <View style={styles.container}>
-          <Image source={{ uri: product.imageUrl }} style={styles.image} />
-          <View style={styles.cardDescription}>
-            <View style={styles.infoView}>
-              <Text style={styles.title}>{product.name}</Text>
-              <Text style={styles.price}>${product.price}</Text>
-            </View>
-            <View style={styles.iconView}>
-              <TouchableOpacity onPress={onFavoritePress}>
-                <FontAwesome
-                  name={isInFavorite ? 'heart' : 'heart-o'}
-                  size={constants.iconSize.small} />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>}
-    />
+    <View style={styles.container}>
+      <TouchableOpacity onPress={onFavoritePress} style={styles.iconView}>
+        <FontAwesome
+          color={constants.colors.background}
+          name={isInFavorite ? 'heart' : 'heart-o'}
+          size={constants.iconSize.small} />
+      </TouchableOpacity>
+      <Image source={{ uri: product.imageUrl }} style={styles.image} />
+      <View style={styles.cardDescription}>
+        <View style={styles.infoView}>
+          <Text style={styles.title}>{product.name}</Text>
+          <Text style={styles.price}>${product.price}</Text>
+        </View>
+      </View>
+    </View>
   );
 }
+

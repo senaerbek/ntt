@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
     image: {
       width: '100%',
       height: 300,
-      resizeMode: 'contain',
+      resizeMode: 'stretch',
+      borderRadius: constants.borderRadius.large,
     },
     title: {
       fontWeight: 'bold',
@@ -18,14 +19,26 @@ export const styles = StyleSheet.create({
       fontSize: constants.size.font24,
     },
     price: {
+      fontWeight: '900',
+      color: constants.colors.text,
       fontSize: constants.size.font20,
       marginTop: constants.padding.mini,
-      color: constants.colors.textSecondary,
     },
     cardDescription: {
+      color: constants.colors.text,
       fontSize: constants.size.font14,
       marginTop: constants.padding.mini,
-      color: constants.colors.textSecondary,
+    },
+    productContainer: {
+      marginVertical: constants.padding.default,
+    },
+    buttonContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginVertical: constants.padding.default,
+    },
+    quantityContainer: {
+      width: '50%',
     },
   },
 );
