@@ -1,13 +1,13 @@
+import React from 'react';
 import { FlatList, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { CartItemComponent } from '../../components/CartItemComponent';
-import { constants } from '../../theme/constants';
 import { CartItem } from '../../models/CartItem';
 import { BottomSheetComponent } from '../../components/BottomSheetComponent';
 import { ProductDetailComponent } from '../../components/ProductDetailComponent';
-import { HeaderComponent } from '../../HeaderComponent';
 import { styles } from './style';
+import { HeaderComponent } from '../../components/HeaderComponent';
 
 export function CartScreen() {
   const { cartList } = useSelector((state: RootState) => state.cartList);

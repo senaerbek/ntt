@@ -6,11 +6,11 @@ import { AppDispatch, RootState } from '../../store';
 import { getProducts } from '../../api/product/product-service';
 import { styles } from './style';
 import { CardListComponent } from '../../components/CardListComponent';
-import { HeaderComponent } from '../../HeaderComponent';
 import { LoadingComponent } from '../../components/LoadingComponent';
 import { sortProducts } from '../../store/products/productSlice';
 import { FontAwesome } from '@expo/vector-icons';
 import { constants } from '../../theme/constants';
+import { HeaderComponent } from '../../components/HeaderComponent';
 
 export function ProductListScreen() {
   const dispatch = useDispatch<AppDispatch>();

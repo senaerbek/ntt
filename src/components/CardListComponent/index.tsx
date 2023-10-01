@@ -5,12 +5,6 @@ import { FavoriteItem } from '../../models/FavoriteItem';
 import { PaginatedFlatList } from '../PaginatedFlatlistComponent';
 import { BottomSheetComponent } from '../BottomSheetComponent';
 import { ProductDetailComponent } from '../ProductDetailComponent';
-import { Text, View } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import { constants } from '../../theme/constants';
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { sortProducts } from '../../store/products/productSlice';
 
 interface CardListComponentProps {
   products: Product[] | FavoriteItem[];
@@ -33,8 +27,6 @@ export function CardListComponent(props: CardListComponentProps) {
         children={
           <CardComponent
             product={item}
-            onPress={() => {
-            }}
           />
         }
       />

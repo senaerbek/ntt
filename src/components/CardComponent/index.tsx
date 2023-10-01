@@ -8,15 +8,14 @@ import { FavoriteItem } from '../../models/FavoriteItem';
 import { CartItem } from '../../models/CartItem';
 import { RootState } from '../../store';
 import { addToFavorite, removeFromFavorite } from '../../store/favorite/favoriteSlice';
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 
 interface CardComponentProps {
   product: Product | FavoriteItem | CartItem;
-  onPress: () => void;
 }
 
 export function CardComponent(props: CardComponentProps) {
-  const { product, onPress } = props;
+  const { product } = props;
   const dispatch = useDispatch();
   const { favoriteList } = useSelector((state: RootState) => state.favoriteList);
 

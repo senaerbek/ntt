@@ -4,7 +4,7 @@ import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import React, { useCallback, useEffect, useState } from 'react';
 import { styles } from './style';
 import { constants } from '../../theme/constants';
-import { MarkerDragStartEndEvent, MarkerPressEvent } from 'react-native-maps/lib/sharedTypes';
+import { MarkerDragStartEndEvent } from 'react-native-maps/lib/sharedTypes';
 import { Location } from '../../models/Location';
 import * as ExpoLocation from 'expo-location';
 
@@ -34,12 +34,12 @@ export function MapComponent(props: MapComponentProps) {
 
   useEffect(() => {
     (async () => {
-      let { status } = await ExpoLocation.requestForegroundPermissionsAsync();
+      const { status } = await ExpoLocation.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
         alert('Permission to access location was denied');
         return;
       }
-      let location = await ExpoLocation.getCurrentPositionAsync({});
+      const location = await ExpoLocation.getCurrentPositionAsync({});
       setCurrentLocation({
           latitude: location.coords.latitude,
           longitude: location.coords.longitude,

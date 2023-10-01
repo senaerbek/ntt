@@ -1,9 +1,10 @@
 import React from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { styles } from './style';
+import { Location } from '../../models/Location';
 
 interface GooglePlaceInputComponentProps {
-  setLocation: any;
+  setLocation: Location;
 }
 
 const GOOGLE_PLACES_API_KEY = process.env.EXPO_PUBLIC_GOOGLE_PLACES_API_KEY;
@@ -24,7 +25,7 @@ export function GooglePlaceInputComponent(props: GooglePlaceInputComponentProps)
         key: GOOGLE_PLACES_API_KEY,
         language: 'tr',
       }}
-      onPress={(data, details = null) => {
+      onPress={(data, details) => {
         setLocation({
           latitude: details?.geometry.location.lat,
           longitude: details?.geometry.location.lng,

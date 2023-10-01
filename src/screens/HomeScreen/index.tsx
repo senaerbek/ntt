@@ -1,9 +1,8 @@
+import React, { useCallback, useEffect, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { BottomSheetComponent } from '../../components/BottomSheetComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useCallback, useEffect, useState } from 'react';
 import { MapComponent } from '../../components/MapComponent';
-import { HeaderComponent } from '../../HeaderComponent';
 import { ButtonComponent } from '../../components/ButtonComponent';
 import { constants } from '../../theme/constants';
 import { styles } from './style';
@@ -13,6 +12,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackParamList } from '../../navigation/application-navigator';
 import { useDispatch } from 'react-redux';
 import { changeStackNavigation } from '../../store/navigate/navigateSlice';
+import { HeaderComponent } from '../../components/HeaderComponent';
 
 export function HomeScreen() {
   const dispatch = useDispatch();

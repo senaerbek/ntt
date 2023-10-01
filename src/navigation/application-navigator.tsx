@@ -16,22 +16,22 @@ export type StackParamList = {
 
 const Stack = createNativeStackNavigator<StackParamList>();
 export const ApplicationNavigator = memo(function ApplicationNavigator() {
-  const route = useSelector((state: RootState) => state.navigate.switchNavigationRoute);
+	const route = useSelector((state: RootState) => state.navigate.switchNavigationRoute);
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle='dark-content' />
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {
-          route === 'Splash' ?
-            <Stack.Screen name={'Splash'} component={SplashScreen} />
-            :
-            route === 'Main' ?
-              <Stack.Screen name='Main' component={MainNavigator} />
-              :
-              <Stack.Screen name='Auth' component={AuthNavigator} />
-        }
-      </Stack.Navigator>
-    </SafeAreaView>
-  );
+	return (
+		<SafeAreaView style={styles.container}>
+			<StatusBar barStyle='dark-content' />
+			<Stack.Navigator screenOptions={{ headerShown: false }}>
+				{
+					route === 'Splash' ?
+						<Stack.Screen name={'Splash'} component={SplashScreen} />
+						:
+						route === 'Main' ?
+							<Stack.Screen name='Main' component={MainNavigator} />
+							:
+							<Stack.Screen name='Auth' component={AuthNavigator} />
+				}
+			</Stack.Navigator>
+		</SafeAreaView>
+	);
 });

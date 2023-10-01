@@ -7,7 +7,6 @@ const navigateSlice = createSlice({
   },
   reducers: {
     changeStackNavigation: (state, action) => {
-      console.log('action.payload.switchNavigationRoute', action.payload.switchNavigationRoute);
       state.switchNavigationRoute = action.payload.switchNavigationRoute;
     },
   },

@@ -10,11 +10,11 @@ export type AuthStackParamList = {
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 export const AuthNavigator = memo(function AuthNavigator() {
-  return (
-    <View style={styles.container}>
-      <AuthStack.Navigator screenOptions={{ headerShown: false }}>
-        <AuthStack.Screen name='Login' component={LoginScreen} />
-      </AuthStack.Navigator>
-    </View>
-  );
+	return (
+		<View style={styles.container}>
+			<AuthStack.Navigator screenOptions={{ headerShown: false }}>
+				<AuthStack.Screen name='Login' component={LoginScreen} />
+			</AuthStack.Navigator>
+		</View>
+	);
 });
