@@ -12,6 +12,7 @@ export function PaginatedFlatList<T>(props: PaginatedFlatListProps<T>) {
   const [dataToShow, setDataToShow] = useState([]);
 
   const handleLoadMore = useCallback(() => {
+    console.log({ currentPage });
     const nextPage = currentPage + 1;
     const startIndex = (nextPage - 1) * itemsPerPage;
     const endIndex = nextPage * itemsPerPage;
@@ -19,9 +20,9 @@ export function PaginatedFlatList<T>(props: PaginatedFlatListProps<T>) {
 
     if (newData.length > 0) {
       setCurrentPage(nextPage);
-      setDataToShow([...dataToShow, ...newData]);
+      setDataToShow((prevData) => [...prevData, ...newData]);
     }
-  }, [currentPage, itemsPerPage, data, dataToShow]);
+  }, [currentPage, itemsPerPage, data]);
 
   useEffect(() => {
     setDataToShow(data.slice(0, itemsPerPage));

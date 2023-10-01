@@ -4,7 +4,7 @@ import { styles } from './style';
 import { Location } from '../../models/Location';
 
 interface GooglePlaceInputComponentProps {
-  setLocation: Location;
+  setLocation: (location: Location) => void;
 }
 
 const GOOGLE_PLACES_API_KEY = process.env.EXPO_PUBLIC_GOOGLE_PLACES_API_KEY;

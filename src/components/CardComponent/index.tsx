@@ -21,7 +21,7 @@ export function CardComponent(props: CardComponentProps) {
 
   const isInFavorite = useMemo(() => {
     return !!favoriteList.find(favoriteItem => favoriteItem.id === product.id);
-  }, [favoriteList]);
+  }, [favoriteList, product]);
 
   const onFavoritePress = useCallback(() => {
     if (isInFavorite) {
@@ -29,7 +29,7 @@ export function CardComponent(props: CardComponentProps) {
     } else {
       dispatch(addToFavorite(product));
     }
-  }, [isInFavorite]);
+  }, [dispatch, removeFromFavorite, addToFavorite, isInFavorite, product]);
 
   return (
     <View style={styles.container}>
