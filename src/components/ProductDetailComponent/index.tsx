@@ -44,10 +44,13 @@ export function ProductDetailComponent(props: ProductDetailProps) {
                   onIncrease={addToCartPress}
                 />
               </View>
-              : <ButtonComponent
-                onPress={addToCartPress}
-                text={'Add to cart'}
-              />
+              :
+              <View style={styles.button}>
+                <ButtonComponent
+                  onPress={addToCartPress}
+                  text={'Add to cart'}
+                />
+              </View>
           }
         </View>
       </View>

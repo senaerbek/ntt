@@ -7,4 +7,7 @@ export const styles = StyleSheet.create({
     marginBottom: constants.padding.default,
     marginHorizontal: constants.padding.default,
   },
+  listContentContainerStyle: {
+    marginVertical: constants.padding.default,
+  },
 });

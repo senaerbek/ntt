@@ -9,7 +9,6 @@ export function FavoriteListScreen() {
   return (
     <>
       <HeaderComponent title='Favorite List' />
-
       <CardListComponent products={favoriteList} />
     </>
   );

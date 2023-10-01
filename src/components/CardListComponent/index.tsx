@@ -5,6 +5,12 @@ import { FavoriteItem } from '../../models/FavoriteItem';
 import { PaginatedFlatList } from '../PaginatedFlatlistComponent';
 import { BottomSheetComponent } from '../BottomSheetComponent';
 import { ProductDetailComponent } from '../ProductDetailComponent';
+import { Text, View } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import { constants } from '../../theme/constants';
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { sortProducts } from '../../store/products/productSlice';
 
 interface CardListComponentProps {
   products: Product[] | FavoriteItem[];
@@ -15,7 +21,9 @@ const itemsPerPage = 10;
 export function CardListComponent(props: CardListComponentProps) {
   const { products } = props;
 
-  const renderItem = ({ item }: { item: Product }) => {
+  const renderItem = ({ item }: {
+    item: Product
+  }) => {
     return (
       <BottomSheetComponent
         content={
@@ -40,8 +48,10 @@ export function CardListComponent(props: CardListComponentProps) {
       renderItem={renderItem}
       numColumns={2}
       columnWrapperStyle={styles.listWrapperStyle}
+      contentContainerStyle={styles.listContentContainerStyle}
       keyExtractor={(item, index) => index.toString()}
       showsVerticalScrollIndicator={false}
+      ListEmptyComponent={<Text>No products found</Text>}
     />
   );
 }

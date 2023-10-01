@@ -45,5 +45,8 @@ export const styles = StyleSheet.create({
     quantityContainer: {
       width: '50%',
     },
+    button: {
+      width: '100%',
+    },
   },
 );

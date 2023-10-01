@@ -6,6 +6,8 @@ import { constants } from '../../theme/constants';
 import { CartItem } from '../../models/CartItem';
 import { BottomSheetComponent } from '../../components/BottomSheetComponent';
 import { ProductDetailComponent } from '../../components/ProductDetailComponent';
+import { HeaderComponent } from '../../HeaderComponent';
+import { styles } from './style';
 
 export function CartScreen() {
   const { cartList } = useSelector((state: RootState) => state.cartList);
@@ -16,10 +18,7 @@ export function CartScreen() {
     return (
       <BottomSheetComponent
         content={<ProductDetailComponent product={item} />}
-        children={<View style={{
-          marginHorizontal: constants.padding.default,
-          marginVertical: constants.padding.small,
-        }}>
+        children={<View style={styles.listItem}>
           <CartItemComponent cartItem={item} />
         </View>}
       />
@@ -27,10 +26,14 @@ export function CartScreen() {
   };
 
   return (
-    <FlatList
-      data={cartList}
-      renderItem={renderItem}
-      keyExtractor={(item, index) => index.toString()}
-    />
+    <>
+      <HeaderComponent title={'Cart List'} />
+      <FlatList
+        data={cartList}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+        contentContainerStyle={styles.contentContainer}
+      />
+    </>
   );
 }

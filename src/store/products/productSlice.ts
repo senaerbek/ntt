@@ -8,7 +8,11 @@ const productSlice = createSlice({
       products: [] as Product[],
       loading: false,
     },
-    reducers: {},
+    reducers: {
+      sortProducts(state) {
+        state.products.sort((a, b) => a.price - b.price);
+      },
+    },
     extraReducers: builder => {
       builder.addCase(getProducts.pending, state => {
         state.loading = true;
@@ -24,4 +28,5 @@ const productSlice = createSlice({
   },
 );
 
+export const { sortProducts } = productSlice.actions;
 export default productSlice.reducer;

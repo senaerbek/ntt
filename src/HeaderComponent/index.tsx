@@ -1,18 +1,32 @@
+import React from 'react';
 import { Text, View } from 'react-native';
 import { styles } from './style';
+import { FontAwesome } from '@expo/vector-icons';
+import { constants } from '../theme/constants';
+import { Entypo } from '@expo/vector-icons';
 
 interface HeaderProps {
   title: string;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
 }
 
 export function HeaderComponent(props: HeaderProps) {
-  const { title } = props;
+  const { title, leftIcon, rightIcon } = props;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>
-        {title}
-      </Text>
+      <View style={[styles.iconContainer, styles.left, styles.verticalCenter]}>
+        {leftIcon}
+      </View>
+      <View style={[styles.titleContainer, styles.verticalCenter]}>
+        <Text style={styles.title}>
+          {title}
+        </Text>
+      </View>
+      <View style={[styles.iconContainer, styles.right, styles.verticalCenter]}>
+        {rightIcon}
+      </View>
     </View>
   );
 }
