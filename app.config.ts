@@ -4,6 +4,17 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   slug: 'ntt',
   name: 'ntt',
+  extra: {
+    'eas': {
+      'projectId': '5f5a2d41-3a8f-43c6-b432-89974d241829',
+    },
+  },
+  updates: {
+    'url': 'https://u.expo.dev/5f5a2d41-3a8f-43c6-b432-89974d241829',
+  },
+  runtimeVersion: {
+    'policy': 'appVersion',
+  },
   ios: {
     supportsTablet: false,
     bundleIdentifier: 'com.project.ntt',
