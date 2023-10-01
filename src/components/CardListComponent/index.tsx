@@ -51,7 +51,6 @@ export function CardListComponent(props: CardListComponentProps) {
       contentContainerStyle={styles.listContentContainerStyle}
       keyExtractor={(item, index) => index.toString()}
       showsVerticalScrollIndicator={false}
-      ListEmptyComponent={<Text>No products found</Text>}
     />
   );
 }

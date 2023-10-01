@@ -1,4 +1,4 @@
-import { Button, Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { styles } from './style';
 import { FontAwesome } from '@expo/vector-icons';
 import { constants } from '../../theme/constants';
@@ -9,8 +9,6 @@ import { CartItem } from '../../models/CartItem';
 import { RootState } from '../../store';
 import { addToFavorite, removeFromFavorite } from '../../store/favorite/favoriteSlice';
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { BottomSheetComponent } from '../BottomSheetComponent';
-import { ProductDetailComponent } from '../ProductDetailComponent';
 
 interface CardComponentProps {
   product: Product | FavoriteItem | CartItem;

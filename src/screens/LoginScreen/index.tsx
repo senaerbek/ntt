@@ -9,7 +9,7 @@ import { Location } from '../../models/Location';
 import { ButtonComponent } from '../../components/ButtonComponent';
 import { styles } from './style';
 import { useDispatch } from 'react-redux';
-import { setSignIn } from '../../store/auth/authSlice';
+import { setSignIn } from '../../store/navigate/navigateSlice';
 
 export function LoginScreen() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export function LoginScreen() {
 
   const onLoginPress = useCallback(async () => {
     await AsyncStorage.setItem('location', JSON.stringify(location));
-    dispatch(setSignIn({ isLoggedIn: true }));
+    dispatch(setSignIn({ switchNavigationRoute: 'Main' }));
     navigation.navigate('Main');
   }, [location, navigation, dispatch, setSignIn]);
 

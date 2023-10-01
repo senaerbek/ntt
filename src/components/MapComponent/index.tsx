@@ -23,6 +23,7 @@ export function MapComponent(props: MapComponentProps) {
   const { onLocationChange, location, search = false } = props;
   const [defaultLocation, setDefaultLocation] = useState(initialLocation);
   const region = { ...defaultLocation, latitudeDelta: 0.015, longitudeDelta: 0.015 };
+  const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
 
   const onChangeRegion = useCallback((e: Location) => {
     if (onLocationChange) {
@@ -30,8 +31,6 @@ export function MapComponent(props: MapComponentProps) {
       setDefaultLocation(e);
     }
   }, [onLocationChange]);
-
-  const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
 
   useEffect(() => {
     (async () => {

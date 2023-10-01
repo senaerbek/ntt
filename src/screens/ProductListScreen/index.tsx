@@ -20,7 +20,7 @@ export function ProductListScreen() {
     dispatch(getProducts());
   }, [dispatch, getProducts]);
 
-  const sortProductsPress = useCallback(() => {
+  const onSortProductsPress = useCallback(() => {
     dispatch(sortProducts());
   }, [dispatch, sortProducts]);
 
@@ -29,7 +29,7 @@ export function ProductListScreen() {
       <HeaderComponent title='Product List' />
       <View style={styles.sortButtonContainer}>
         <FontAwesome
-          onPress={sortProductsPress}
+          onPress={onSortProductsPress}
           color={constants.colors.primary}
           name={'sort-amount-asc'}
           size={constants.iconSize.small} />

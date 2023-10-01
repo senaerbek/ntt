@@ -1,9 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { styles } from './style';
-import { FontAwesome } from '@expo/vector-icons';
-import { constants } from '../theme/constants';
-import { Entypo } from '@expo/vector-icons';
 
 interface HeaderProps {
   title: string;

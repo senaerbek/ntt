@@ -37,13 +37,13 @@ export function ProductDetailComponent(props: ProductDetailProps) {
         <View style={styles.buttonContainer}>
           {
             productQuantity > 0
-              ? <View style={styles.quantityContainer}>
-                <QuantityControlComponent
-                  quantity={productQuantity}
-                  onDecrease={onDecrease}
-                  onIncrease={addToCartPress}
-                />
-              </View>
+              ?
+              <QuantityControlComponent
+                style={styles.quantityContainer}
+                quantity={productQuantity}
+                onDecrease={onDecrease}
+                onIncrease={addToCartPress}
+              />
               :
               <View style={styles.button}>
                 <ButtonComponent

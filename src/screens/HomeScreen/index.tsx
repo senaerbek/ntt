@@ -1,4 +1,4 @@
-import { Button, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { BottomSheetComponent } from '../../components/BottomSheetComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useCallback, useEffect, useState } from 'react';
@@ -7,13 +7,12 @@ import { HeaderComponent } from '../../HeaderComponent';
 import { ButtonComponent } from '../../components/ButtonComponent';
 import { constants } from '../../theme/constants';
 import { styles } from './style';
-import { FontAwesome } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackParamList } from '../../navigation/application-navigator';
 import { useDispatch } from 'react-redux';
-import { setSignOut } from '../../store/auth/authSlice';
+import { setSignOut } from '../../store/navigate/navigateSlice';
 
 export function HomeScreen() {
   const dispatch = useDispatch();
@@ -26,14 +25,14 @@ export function HomeScreen() {
 
   const navigateToAuthStack = useCallback(() => {
     navigation.navigate('Auth');
-  }, []);
+  }, [navigation]);
 
-  const logOutPress = useCallback(() => {
+  const onLogOutPress = useCallback(() => {
     deleteFromAsyncStorage().then(() => {
       dispatch(setSignOut());
       navigateToAuthStack();
     });
-  }, []);
+  }, [navigateToAuthStack, deleteFromAsyncStorage, dispatch]);
 
   useEffect(() => {
     AsyncStorage.getItem('location').then((value) => {
@@ -48,7 +47,7 @@ export function HomeScreen() {
       <HeaderComponent
         title='HomeScreen'
         rightIcon={
-          <TouchableOpacity onPress={logOutPress}>
+          <TouchableOpacity onPress={onLogOutPress}>
             <Entypo
               color={constants.colors.primary}
               name='log-out'

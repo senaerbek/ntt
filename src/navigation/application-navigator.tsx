@@ -6,6 +6,7 @@ import { styles } from './style';
 import { AuthNavigator } from './auth-navigator';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
+import { SplashScreen } from '../screens/SplashScreen';
 
 export type StackParamList = {
   Splash: undefined;
@@ -15,18 +16,20 @@ export type StackParamList = {
 
 const Stack = createNativeStackNavigator<StackParamList>();
 export const ApplicationNavigator = memo(function ApplicationNavigator() {
-  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+  const route = useSelector((state: RootState) => state.navigate.switchNavigationRoute);
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle='dark-content' />
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {
-          isLoggedIn ? (
-            <Stack.Screen name='Main' component={MainNavigator} />
-          ) : (
-            <Stack.Screen name='Auth' component={AuthNavigator} />
-          )
+          route === 'Splash' ?
+            <Stack.Screen name={'Splash'} component={SplashScreen} />
+            :
+            route === 'Main' ?
+              <Stack.Screen name='Main' component={MainNavigator} />
+              :
+              <Stack.Screen name='Auth' component={AuthNavigator} />
         }
       </Stack.Navigator>
     </SafeAreaView>

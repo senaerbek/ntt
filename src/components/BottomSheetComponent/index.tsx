@@ -1,12 +1,11 @@
-import React, { PropsWithChildren, useCallback, useMemo, useRef, useState } from 'react';
-import BottomSheet, {
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import {
   BottomSheetBackdrop,
   BottomSheetModal,
   BottomSheetScrollView,
-  useBottomSheetModal,
 } from '@gorhom/bottom-sheet';
-import { Button, Text, TouchableOpacity, View } from 'react-native';
-import { styles } from '../../navigation/style';
+import { TouchableOpacity } from 'react-native';
+import { styles } from './style';
 import { BottomSheetBackdropProps } from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheetBackdrop';
 
 interface Props {
@@ -49,9 +48,7 @@ export function BottomSheetComponent(props: Props) {
         backdropComponent={renderBackdrop}
         enableDynamicSizing={false}
       >
-        <BottomSheetScrollView contentContainerStyle={{
-          flex: 1,
-        }}>
+        <BottomSheetScrollView contentContainerStyle={styles.bottomSheetContainer}>
           {content}
         </BottomSheetScrollView>
       </BottomSheetModal>
