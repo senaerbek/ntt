@@ -1,89 +1,39 @@
-src  
-├── api  
-│ ├── index.ts  
-│ └── product  
-│ └── product-service.ts  
-├── components  
-│ ├── BottomSheetComponent  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ ├── ButtonComponent  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ ├── CardComponent  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ ├── CardListComponent  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ ├── CartItemComponent  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ ├── GooglePlaceInputComponent  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ ├── HeaderComponent  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ ├── LoadingComponent  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ ├── MapComponent  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ ├── PaginatedFlatlistComponent  
-│ │ └── index.tsx  
-│ ├── ProductDetailComponent  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ └── QuantityControlComponent  
-│ ├── index.tsx  
-│ └── style.ts  
-├── models  
-│ ├── CartItem.ts  
-│ ├── FavoriteItem.ts  
-│ ├── Location.ts  
-│ └── Product.ts  
-├── navigation  
-│ ├── application-navigator.tsx  
-│ ├── auth-navigator.tsx  
-│ ├── main-navigator.tsx  
-│ └── style.ts  
-├── screens  
-│ ├── CartScreen  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ ├── FavoriteListScreen  
-│ │ └── index.tsx  
-│ ├── HomeScreen  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ ├── LoginScreen  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ ├── ProductListScreen  
-│ │ ├── index.tsx  
-│ │ └── style.ts  
-│ └── SplashScreen  
-│ ├── index.tsx  
-│ └── style.ts  
-├── store  
-│ ├── cart  
-│ │ └── cartSlice.ts  
-│ ├── favorite  
-│ │ └── favoriteSlice.ts  
-│ ├── index.ts  
-│ ├── navigate  
-│ │ └── navigateSlice.ts  
-│ └── products  
-│ └── productSlice.ts  
-└── theme └── constants.ts
+# Expo Ecommerce App
 
-31 directories, 50 files
+![Simulator Screen Shot - iPhone 14 Pro Max - 2023-10-01 at 17 01 51](https://github.com/senaerbek/TestCase/assets/36725302/a0395c33-e4d8-4a92-a1dc-8ecce45c005c)
+![Simulator Screen Shot - iPhone 14 Pro Max - 2023-10-01 at 17 01 28](https://github.com/senaerbek/TestCase/assets/36725302/759a822f-cc84-4cf6-a37c-f03c489694a9)
+![Simulator Screen Shot - iPhone 14 Pro Max - 2023-10-01 at 17 01 19](https://github.com/senaerbek/TestCase/assets/36725302/f1bdd1fc-2a12-43b3-9b41-85b6d14cc350)
 
-* * *
-
-tree v2.1.1 © 1996 - 2023 by Steve Baker and Thomas Moore  
-HTML output hacked and copyleft © 1998 by Francesc Rocher  
-JSON output hacked and copyleft © 2014 by Florian Sesser  
-Charsets / OS/2 support © 2001 by Kyosuke Tokoro
+```
+src
+├── api
+│   └── product
+├── components
+│   ├── BottomSheetComponent
+│   ├── ButtonComponent
+│   ├── CardComponent
+│   ├── CardListComponent
+│   ├── CartItemComponent
+│   ├── GooglePlaceInputComponent
+│   ├── HeaderComponent
+│   ├── LoadingComponent
+│   ├── MapComponent
+│   ├── PaginatedFlatlistComponent
+│   ├── ProductDetailComponent
+│   └── QuantityControlComponent
+├── models
+├── navigation
+├── screens
+│   ├── CartScreen
+│   ├── FavoriteListScreen
+│   ├── HomeScreen
+│   ├── LoginScreen
+│   ├── ProductListScreen
+│   └── SplashScreen
+├── store
+│   ├── cart
+│   ├── favorite
+│   ├── navigate
+│   └── products
+└── theme
+```
