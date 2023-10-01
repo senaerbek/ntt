@@ -12,7 +12,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackParamList } from '../../navigation/application-navigator';
 import { useDispatch } from 'react-redux';
-import { setSignOut } from '../../store/navigate/navigateSlice';
+import { changeStackNavigation } from '../../store/navigate/navigateSlice';
 
 export function HomeScreen() {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export function HomeScreen() {
 
   const onLogOutPress = useCallback(() => {
     deleteFromAsyncStorage().then(() => {
-      dispatch(setSignOut());
+      dispatch(changeStackNavigation({ switchNavigationRoute: 'Auth' }));
       navigateToAuthStack();
     });
   }, [navigateToAuthStack, deleteFromAsyncStorage, dispatch]);

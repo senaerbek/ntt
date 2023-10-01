@@ -1,19 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const navigateSlice = createSlice({
-  name: 'auth',
+  name: 'navigate',
   initialState: {
     switchNavigationRoute: 'Splash',
   },
   reducers: {
-    setSignIn: (state, action) => {
+    changeStackNavigation: (state, action) => {
+      console.log('action.payload.switchNavigationRoute', action.payload.switchNavigationRoute);
       state.switchNavigationRoute = action.payload.switchNavigationRoute;
-    },
-    setSignOut: (state) => {
-      state.switchNavigationRoute = 'Auth';
     },
   },
 });
 
-export const { setSignIn, setSignOut } = navigateSlice.actions;
+export const { changeStackNavigation } = navigateSlice.actions;
 export default navigateSlice.reducer;
