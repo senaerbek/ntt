@@ -1,5 +1,11 @@
 # Expo Ecommerce App
 
+## Installation
+
+```bash
+https://expo.dev/accounts/senaerbek/projects/ntt/builds/1197a551-e0f6-450a-a76e-ee0165f296c6
+```
+
 ![Simulator Screen Shot - iPhone 14 Pro Max - 2023-10-01 at 17 01 51](https://github.com/senaerbek/TestCase/assets/36725302/a0395c33-e4d8-4a92-a1dc-8ecce45c005c)
 ![Simulator Screen Shot - iPhone 14 Pro Max - 2023-10-01 at 17 01 28](https://github.com/senaerbek/TestCase/assets/36725302/759a822f-cc84-4cf6-a37c-f03c489694a9)
 ![Simulator Screen Shot - iPhone 14 Pro Max - 2023-10-01 at 17 01 19](https://github.com/senaerbek/TestCase/assets/36725302/f1bdd1fc-2a12-43b3-9b41-85b6d14cc350)
